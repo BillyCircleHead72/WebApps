@@ -8,54 +8,71 @@
         <style>
     
         body {
-            background: url("calculator\ background\ for\ Wisya.png") no-repeat top center;
-            background-size: contain;
-            background-color: #38b6ff;
-        }
-        h1 {
-        color: red;
-        font-family: 'Segoe UI';
-        }
-        input, button {
-            aspect-ratio: 1 / 1;
-            width: 67px;
-            text-align: center;
-            font-family: 'Segoe UI';
-            font-size: 20px;
-            font-weight: bold;
-            background-color: #d5d9ff;
-            border-width: 8px;
-            border-color: #401268;
-            border-radius: 10px;
-            border-style: solid;
+    margin: 0;
+    background-color: #38b6ff;
+    font-family: 'Segoe UI';
+}
 
-        }
-        .credits {
-            margin: 10px 10px 0px 0px;
-            opacity: 100%;
-            font-size: 10px;
-        }
-        .box-placements {
-            margin-top: 250px;
-        }
-        .row {
-            display: flex;
-            gap: 10 px;
-        }
+.background-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+}
+
+.bg-image {
+    width: 100%;
+    display: block;
+}
+
+.content {
+    position: absolute;
+    top: 55%;       /* adjust this to fit purple box */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+input {
+    aspect-ratio: 1 / 1;
+    width: 70px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #d5d9ff;
+    border: 8px solid #401268;
+    border-radius: 10px;
+}
         </style>
     </head>
     <body>
-        <h1>Quadratic Formula Calculator (for Wisya)</h1>
+        <div class="background-container">
 
-        <p>Please enter the known numbers accordingly :D</p>
-        <div class="box-placements row">
-        <input type="number" id="a" placeholder="a">
-        <input type="number" id="b" placeholder="b">
-        <input type="number" id="c" placeholder="c"> 
-        <button onclick="calculateXAnd1X2()">Calculate</button>
+            <img src="calculator background for Wisya.png" class="bg-image">
+
+            <div class="content">
+                <h1>Quadratic Formula Calculator (for Wisya)</h1>
+                <p>Please enter the known numbers accordingly :D</p>
+
+                <div class="row inputs">
+                    <input type="number" id="a" placeholder="a"> 
+                    <input type="number" id="b" placeholder="b">
+                    <input type="number" id="c" placeholder="c">
+            </div>
+
+            <button onclick="calculateXAnd1X2()">Calculate</button>
+            <h2 id="result"></h2>
         </div>
-        <h2 id="result"></h2>
-    </body>
+
+</div>
+
+<p class="credits">Made by: calon suamimu</p>
 
     <script>
 
@@ -80,12 +97,5 @@
         }
         
     </script>
-    <p class="credits">Made by: calon suamimu</p>
+
 </html> 
-
-
-
-
-
-
-
