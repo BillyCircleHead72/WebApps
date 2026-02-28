@@ -13,8 +13,8 @@
             font-family: 'Segoe UI';
         }
 
-            .background-container {
-            position: absolute;
+        .background-container {
+            position: relative;
             height: 750px;
             width: 100%;
             max-width: 500px;
@@ -26,70 +26,78 @@
             display: block;
         }
         .text {
-        
-        width: 100%;
-        top: 55%;
-        left: 50%;
-        transform: translate(-50%, -40%);
-    }
-    .content {
-        position: absolute;
-        top: 55%;
-        left: 50%;
-        transform: translate(-50%, -40%);
-        text-align: center;
-        width: 100%;
-    }
+            line-height: 1;
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, 75%);
+            text-align: center;
+            max-width: 350px;
+            width: 100%;
+        }
+        .content {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, 75%);
+            text-align: center;
+            width: 100%;
+        }
 
         .row {
-        display: flex;
-        justify-content: center;
-        gap: 8px;
-    }
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
 
-    input[type="Number"] {
-        aspect-ratio: 1 / 1;
-        text-align: center;
-        width: 70px;
-        font-size: 20px;
-        font-weight: bold;
-        background-color: #d5d9ff;
-        border: 8px solid #401268;
-        border-radius: 10px;
-    }
+        input[type="Number"] {
+            aspect-ratio: 1 / 1;
+            text-align: center;
+            width: 70px;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: #d5d9ff;
+            border: 8px solid #401268;
+            border-radius: 10px;
+        }
 
-    input[type="text"] {
-        margin-top: 5px;
-        text-align: center;
-        height: 25px;
-        width: 120px;
-        font-size: 20px;
-        font-weight: bold;
-        background-color: #d5d9ff;
-        border: 8px solid #401268;
-        border-radius: 10px;
-    }
-    button {
-        margin-top: 5px;
-        text-align: center;
-        width: 120px;
-        font-size: 20px;
-        font-weight: bold;
-        background-color: #d5d9ff;
-        border: 8px solid #401268;
-        border-radius: 10px;
-    }
+        input[type="text"] {
+            margin-top: 5px;
+            text-align: center;
+            height: 25px;
+            width: 120px;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: #d5d9ff;
+            border: 8px solid #401268;
+            border-radius: 10px;
+        }
+        button {
+            margin-top: 5px;
+            text-align: center;
+            width: 120px;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: #d5d9ff;
+            border: 8px solid #401268;
+            border-radius: 10px;
+        }
     
         </style>
     </head>
+
     <body>
+
         <div class="background-container">
+            <div class="text">
+                <h1>Quadratic Formula Calculator</h1>
+                <h5>(for Wisya)</h5>
+                <p>Kalkulator ini dibuat untuk Wisya sebagai proyek pertama kaka belajar HTML, JavaScript dan CSS. Kaka tahu wisya mah tidak perlu yang seperti ini soalnya sudah keren matematikanya, tetapi ini insyaAllah kapan kapan ini tetap memmbantu juga</p>
+            </div>
 
             <img src="calculator background for Wisya.png" class="bg-image">
-            <div class="text">
-                <h1>Quadratic Formula Calculator (for Wisya)</h1>
-                <p>Please enter the known numbers accordingly :D</p>
-            </div>
+
+
             <div class="content">
 
                 <div class="row">
@@ -99,7 +107,7 @@
                 </div>
                 <div>
                     <input type="text" id="x1" placeholder="x1" readonly>
-                    <input type="text" id="x2" placeholder="x1" readonly>
+                    <input type="text" id="x2" placeholder="x2" readonly>
                 </div>
 
             <button onclick="calculateXAnd1X2()">Calculate</button>
@@ -124,12 +132,8 @@
             let x1 = (-b + squareRootOfDiscriminant(discriminant)) / (2 * a)
             let x2 = (-b - squareRootOfDiscriminant(discriminant)) / (2 * a)
 
-            if (discriminant < 0) {
-                document.getElementById("result").innerText = "No Solution (Curve isn't Attached to the X-Axis)"
-            } else {
             document.getElementById("x1").value = x1
             document.getElementById("x2").value = x2
-            }
         }
         
     </script>
