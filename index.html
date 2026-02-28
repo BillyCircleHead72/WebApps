@@ -8,69 +8,104 @@
         <style>
     
         body {
-    margin: 0;
-    background-color: #38b6ff;
-    font-family: 'Segoe UI';
-}
+            margin: 0;
+            background-color: #38b6ff;
+            font-family: 'Segoe UI';
+        }
 
-.background-container {
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-    margin: auto;
-}
+            .background-container {
+            position: absolute;
+            height: 750px;
+            width: 100%;
+            max-width: 500px;
+            margin: auto;
+        }
 
-.bg-image {
-    width: 100%;
-    display: block;
-}
+        .bg-image {
+            width: 100%;
+            display: block;
+        }
+        .text {
+        
+        width: 100%;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -40%);
+    }
+    .content {
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -40%);
+        text-align: center;
+        width: 100%;
+    }
 
-.content {
-    position: absolute;
-    top: 55%;       /* adjust this to fit purple box */
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    width: 100%;
-}
+        .row {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+    }
 
-.row {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-}
+    input[type="Number"] {
+        aspect-ratio: 1 / 1;
+        text-align: center;
+        width: 70px;
+        font-size: 20px;
+        font-weight: bold;
+        background-color: #d5d9ff;
+        border: 8px solid #401268;
+        border-radius: 10px;
+    }
 
-input {
-    aspect-ratio: 1 / 1;
-    width: 70px;
-    font-size: 20px;
-    font-weight: bold;
-    background-color: #d5d9ff;
-    border: 8px solid #401268;
-    border-radius: 10px;
-}
+    input[type="text"] {
+        margin-top: 5px;
+        text-align: center;
+        height: 25px;
+        width: 120px;
+        font-size: 20px;
+        font-weight: bold;
+        background-color: #d5d9ff;
+        border: 8px solid #401268;
+        border-radius: 10px;
+    }
+    button {
+        margin-top: 5px;
+        text-align: center;
+        width: 120px;
+        font-size: 20px;
+        font-weight: bold;
+        background-color: #d5d9ff;
+        border: 8px solid #401268;
+        border-radius: 10px;
+    }
+    
         </style>
     </head>
     <body>
         <div class="background-container">
 
             <img src="calculator background for Wisya.png" class="bg-image">
-
-            <div class="content">
+            <div class="text">
                 <h1>Quadratic Formula Calculator (for Wisya)</h1>
                 <p>Please enter the known numbers accordingly :D</p>
+            </div>
+            <div class="content">
 
-                <div class="row inputs">
+                <div class="row">
                     <input type="number" id="a" placeholder="a"> 
                     <input type="number" id="b" placeholder="b">
                     <input type="number" id="c" placeholder="c">
-            </div>
+                </div>
+                <div>
+                    <input type="text" id="x1" placeholder="x1" readonly>
+                    <input type="text" id="x2" placeholder="x1" readonly>
+                </div>
 
             <button onclick="calculateXAnd1X2()">Calculate</button>
-            <h2 id="result"></h2>
-        </div>
+            </div>
 
-</div>
+        </div>
 
 <p class="credits">Made by: calon suamimu</p>
 
@@ -90,9 +125,10 @@ input {
             let x2 = (-b - squareRootOfDiscriminant(discriminant)) / (2 * a)
 
             if (discriminant < 0) {
-                document.getElementById("result").innerText = "No Solution (Curve isn't Attached to the x-axis)"
+                document.getElementById("result").innerText = "No Solution (Curve isn't Attached to the X-Axis)"
             } else {
-            document.getElementById("result").innerText = "x1 = " + x1 + "\n" + "x2 = " + x2
+            document.getElementById("x1").value = x1
+            document.getElementById("x2").value = x2
             }
         }
         
