@@ -5,20 +5,19 @@
             <title>Task Tracker WebApp</title>
 
             <style>
+                .title {
+                    position: fixed;
+                }
                 html, body {
                     margin: 0;
                     padding: 0;
                     height: 100%;
                 }
-                .bg-image {
-                    width: 100%;
-                    display: block;
-                }
                 body {
                     font-family: cursive;
                     margin: 0;
-                    font-family: cursive;
-                    background-image: url("task tracker.png");
+                    background-image: url("task tracker background.png");
+                    background-color: #e0a048;
                     background-size: cover;
                     background-position: center; 
                     background-repeat: no-repeat;
@@ -26,52 +25,76 @@
                     min-height: 100dvh;
                     
                 }
+                .content {
+                    position: absolute;
+                    top: 5%;
+                    left: 50%;
+                    transform: translate(-50%, 35%);
+                    text-align: center;
+                    width: 100%;
+                }
                 .texts { 
-                    margin-top: -60px;
+                    margin-top: -20px;
                     margin-left: 200px;
                     position: fixed;
                     text-align: center;
 
                 }
-                #buttons {
-                    margin-top: 50px;
+                button {
+                    margin-top: 5px;
+                    font-family: cursive;
+                    text-align: center;
+                    background-color: #e8d3b5;
+                    border-color: #705532;
+                    outline: #705532;
                 }
-
+                input {
+                    font-family: cursive;
+                    text-align: center;
+                    background-color: #e8d3b5;
+                    border: 2.5px solid #705532;
+                    outline: #705532;
+                }
                 li {
                     display: flex;
                     align-items: center;
                     gap : 10px;
+                }
+                .credits {
+                    position: absolute;
+                    left: 25%;
+                    top: 100%;
                 }
             </style>
         </head>
 
         <body>
             
-            <div class="content">
-            <h1>TIMER</h1>
+            <h1>~Task Tracker~</h1>
             <h2 id="time">0:00</h2>
             <h2 id="timesUp" class="texts" style="display: none;">Time is Up!!<br>
                 <span style="font-size: 10px;">Please Reset the Timer..</span></h2>
-            <input type="number" id="minutesInput" placeholder="Input Minutes Here :D">
+            
             <h2 id="minus" class="texts" style="display: none;">Invalid Input</h2>
-            <br>
+            <div class="content">
+            <input type="number" id="minutesInput" placeholder="Input Minutes Here :D">
             <button onclick="startTimer()">Start</button>
             <button onclick="pauseTimer()">Pause</button>
             <button onclick="resetTimer()">Reset</button>
             <br>
             <input type="text" id="taskInput" placeholder="Enter Task...">
-            <br>
-            <button onclick="addTask()">Add Task</button>
+            <button  onclick="addTask()">Add Task</button>
+            </div>
             <ol id="taskList"></ol>
 
-            <p><span style="font-weight: 500;">by: Orang yang <span style="font-weight: 1000;">masih</span> menginginkanmu</span></p>
-            </div>
+            <p class="credits"><span style="font-weight: 500;">by: Orang yang <span style="font-weight: 1000;">masih</span> menginginkanmu</span></p>
+
 
 
         </body>
 
         <script>
-            const max_tasks = 2
+            const max_tasks = 10
             let tasks = [];
             //Tasks code
             function addTask() {
@@ -180,7 +203,7 @@
 
                     time--;
                     timerDisplay();
-                }, 10);
+                }, 1000);
             }
 
             function pauseTimer() {
