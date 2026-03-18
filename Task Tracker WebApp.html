@@ -87,12 +87,13 @@
                 li span {
                     flex: 1;
                     text-align: center;
-                    max-width: 300px;
+                    max-width: 200px;
                 }
                 .credits {
+                    text-align: center;
                     position: absolute;
                     left: 25%;
-                    top: 100%;
+                    top: 90%;
                 }
             </style>
         </head>
@@ -119,7 +120,7 @@
 
             <ol id="taskList"></ol>
 
-            <p class="credits"><span style="font-weight: 500;">by: Orang yang <span style="font-weight: 1000;">masih</span> menginginkanmu</span></p>
+            <p class="credits"><span style="font-weight: 500;">by: Orang yang <span style="font-weight: 1000;">masih</span><br> menginginkanmu</span></p>
 
 
 
@@ -230,13 +231,13 @@
                         clearInterval(timer);
                         time = null;
                         document.getElementById("timesUp").style.display= "block";
-                        navigator.vibrate(250); 
+                        navigator.vibrate(500); 
                         return;
                     }
 
                     time--;
                     timerDisplay();
-                }, 1000);
+                }, 10);
             }
 
             function pauseTimer() {
