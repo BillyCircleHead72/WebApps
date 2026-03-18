@@ -1,0 +1,196 @@
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Task Tracker WebApp</title>
+
+            <style>
+                .content {
+                    position: absolute;
+                    left: 40%;
+                    top: 20%;
+                }
+                .bg-image {
+                    width: 100%;
+                    display: block;
+                }
+                body {
+                    font-family: cursive;
+                }
+                .texts {
+                    margin-top: -60px;
+                    margin-left: 200px;
+                    position: fixed;
+                    text-align: center;
+                }
+                #buttons {
+                    margin-top: 50px;
+                }
+
+                li {
+                    display: flex;
+                    align-items: center;
+                    gap : 10px;
+                }
+            </style>
+        </head>
+
+        <body>
+            
+            <div class="content">
+            <h1>TIMER</h1>
+            <h2 id="time">0:00</h2>
+            <h2 id="timesUp" class="texts" style="display: none;">Time is Up!!<br>
+                <span style="font-size: 10px;">Please Reset the Timer..</span></h2>
+            <input type="number" id="minutesInput" placeholder="Input Minutes Here :D">
+            <h2 id="minus" class="texts" style="display: none;">Invalid Input</h2>
+            <br>
+            <button onclick="startTimer()">Start</button>
+            <button onclick="pauseTimer()">Pause</button>
+            <button onclick="resetTimer()">Reset</button>
+            <br>
+            <input type="text" id="taskInput" placeholder="Enter Task...">
+            <br>
+            <button onclick="addTask()">Add Task</button>
+            <ol id="taskList"></ol>
+
+            <p><span style="font-weight: 500;">by: Orang yang <span style="font-weight: 1000;">masih</span> menginginkanmu</span></p>
+            </div>
+            <img src="task tracker.png" class="bg-image">
+
+        </body>
+
+        <script>
+            const max_tasks = 2
+            let tasks = [];
+            //Tasks code
+            function addTask() {
+                let agenda = document.getElementById("taskInput").value;
+
+                if (tasks.length > max_tasks-1) {
+                    return;
+                }
+                if (agenda === "") {
+                    return;
+                }
+
+                tasks.push({
+                    name: agenda,
+                    done: false
+                });
+
+                document.getElementById("taskInput").value = "";
+
+                displayTasks();
+            }
+
+            function displayTasks() {
+                let list = document.getElementById("taskList");
+
+                list.innerHTML = "";
+                for (let i = 0; i < tasks.length; i++) {
+                    //list
+                    let li = document.createElement("li");
+
+                    //checkbox
+                    let checkbox = document.createElement("input");
+                    checkbox.type = "checkbox";
+                    checkbox.checked = tasks[i].done;
+                    checkbox.onclick = function () {
+                        tasks[i].done = !tasks[i].done;
+                        displayTasks();
+                    };
+
+                    //name of task
+                    let span = document.createElement("span");
+                    span.textContent = tasks[i].name;
+
+                    //delete button
+                    let deleteButton = document.createElement("button");
+                    deleteButton.textContent = "Delete";
+                    deleteButton.onclick = function () {
+                        tasks.splice(i,1); //remove task from array
+                        displayTasks();
+                    };
+                    if (tasks[i].done) {
+                        span.style.textDecoration= "line-through";
+                    }
+
+                    li.appendChild(checkbox);
+                    li.appendChild(span);
+                    li.appendChild(deleteButton);
+                    list.appendChild(li);
+                }
+            }
+            
+
+
+            //Timer code
+            let time = 0;
+            let timer = null;
+
+            function timerDisplay() {
+                let minutes = Math.floor(time / 60);
+                let seconds = time % 60;
+
+                if (seconds < 10) {
+                    seconds = "0" + seconds;
+                }
+                document.getElementById("time").textContent =
+                minutes + ":" + seconds;
+            }
+
+            function startTimer() {
+                if (timer !== null) {
+                    return;
+                }
+                
+                if (time == 0) {
+                    let minutes = document.getElementById("minutesInput").value;
+                    if (minutes < 0) {
+                        document.getElementById("minus").style.display= "block";
+                        return;
+                    } else {
+                        document.getElementById("minus").style.display= "none";
+                        time = minutes * 60;
+                    }
+                }
+                
+
+                timerDisplay();
+
+                timer = setInterval(function timer(){
+                    
+                    if (time <= 0) {
+                        clearInterval(timer);
+                        time = null;
+                        document.getElementById("timesUp").style.display= "block";
+                        return;
+                    }
+
+                    time--;
+                    timerDisplay();
+                }, 10);
+            }
+
+            function pauseTimer() {
+                clearInterval(timer);
+                timer = null;
+            }
+
+            function resetTimer() {
+                clearInterval(timer);
+                timer = null;
+                time = 0;
+                document.getElementById("timesUp").style.display= "none"
+                document.getElementById("minus").style.display= "none";
+                timerDisplay();
+            }
+
+            timerDisplay();
+
+
+
+        </script>
+
+    </html>
